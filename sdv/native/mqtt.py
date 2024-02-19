@@ -39,8 +39,8 @@ class MqttClient(PubSubClient):
         self._hostname = hostname
         self._topics_to_subscribe: list[MqttTopicSubscription] = []
 
-        self._pub_client = mqtt.Client()
-        self._sub_client = mqtt.Client()
+        self._pub_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
+        self._sub_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
         self._sub_client.on_connect = self.on_connect
         self._sub_client.on_disconnect = self.on_disconnect
 
